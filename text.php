@@ -33,25 +33,16 @@ $i = 0;
                     <use xlink:href="#icon-coffee" href="#icon-coffee">
                 </svg>Room <?= $i + 1 ?></h2>
 
-            <?php if ($desk['visible']) :  ?>
-                <form class="input" action="components/update-room.php?desk_id=<?= $desk['id'] ?>&room_id=<?= $room['id'] ?>&room_count=<?= $room['room_count'] ?>" method="post">
-                    <div class="group">
-                        <input type="date" name="date" class="date" placeholder="Choose Date" required>
-                    </div>
-                    <div class="input">
-                        <textarea class="input__field" name="text" id="editor" required></textarea>
-                        <!-- <input name="text" class="input__field" type="text" placeholder=" " required > -->
-                        <span class="input__label">Text</span>
-                    </div>
-                    <div class="button-group">
-                        <input class="button1" type="submit" value="save">
-                        <!-- <button type="reset">Reset</button> -->
-                    </div>
-                </form>
-            <?php else : ?>
-                <p class="datep"><?= $desk['date'] ?></p>
-                <p class="textp"><?= $desk['text'] ?></p>
-            <?php endif ?>
+            <form class="input" action="components/update-room.php?desk_id=<?= $desk['id'] ?>&room_id=<?= $room['id'] ?>&room_count=<?= $room['room_count'] ?>" method="post">
+                <div class="input">
+                    <textarea class="input__field" name="text" id="editor" required><?= $desk['text'] ?></textarea>
+                    <span class="input__label">Text</span>
+                </div>
+                <div class="button-group">
+                    <input class="button1" type="submit" value="save">
+                    <!-- <button type="reset">Reset</button> -->
+                </div>
+            </form>
         </div>
     <?php $i++;
     endforeach; ?>
