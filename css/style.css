@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.group {
+    padding-top: 50px;
+}
+.gr {
+    margin-top: 20px;
+    margin-left: 68%;
+    height: 60px;
+    width: 300px;
+    background-color: rgb(0, 145, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #0400f3;
+    border-radius: 10px;
+}
+.booknow {
+    color: rgb(255, 255, 255);
+    font-size: 36px;
+    font-weight: 700;
+    padding: 10px;
+}
+.date {
+    height: 35px;
+    width: 300px;
+    background: rgba(74, 186, 246, 0.948);
+    border: 5px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+.blog {
+    padding-top: 100px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    row-gap: 40px;
+}
+.box {
+    height: 100px;
+    width: 200px;
+    border: 5px solid #000;
+    border-radius: 10px;
+    display: flex;
+    background: rgb(9, 232, 5);
+}
+.box-h1 {
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-left: 40px;
+    margin: 0 auto;
+}
+.box-span {
+    color: #000;
+    font-size: 32px;
+    font-weight: 700;
+    padding-left: 80px;
+    padding-top: 10px;
+}
+/**************************************** pagination ************************************************************************/
+.bg-cirkleblog {
+    border-radius: 40px;
+}
+
+.gallery-items .item.hide {
+    display: none;
+}
+.gallery-items .item.show {
+    display: block;
+    animation: show 0.5s ease;
+}
+@keyframes show {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.gallery-items .item .caption {
+    position: absolute;
+    /* left:0px; */
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+}
+.pagination {
+    width: 100%;
+    /* float: left; */
+    /* padding:45px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    padding-right: 60px;
+}
+.pagination div {
+    display: inline-block;
+    margin: 0 10px;
+}
+.pagination .page {
+    color: gray;
+}
+.pagination .prev,
+.pagination .next {
+    color: #000;
+    border: 1px solid #000;
+    font-size: 15px;
+    padding: 7px 15px;
+    cursor: pointer;
+}
+
+.pagination .prev.disabled,
+.pagination .next.disabled {
+    border-color: gray;
+    color: gray;
+    pointer-events: none;
+}
+.box__link:active, .box__link.active{
+    background-color: crimson;
+    border-color: crimson;
+}
+/**************************************** pagination ************************************************************************/
