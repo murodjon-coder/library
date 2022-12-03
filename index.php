@@ -1,7 +1,25 @@
 <?php
 include_once('./components/db.php');
 
-$query = $conn->query("SELECT * FROM room");
+$query = $conn->query("SELECT * FROM desks");
+$desks = [];
+$i = 1;
+$j = 1;
+$roomcount = 0;
+while ($row = $query->fetch_assoc()) {
+    $roomcount += $row['visible'];
+    if ($i % 3 == 0) {
+        array_push($desks, array(
+            'id' => $j + 100,
+            'room_count' => $roomcount,
+        ));
+        $roomcount = 0;
+        $j++;
+    }
+    $i++;
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -22,12 +40,12 @@ $query = $conn->query("SELECT * FROM room");
         </div>
         <div class="blog gallery-items">
             <?php
-            while ($room = $query->fetch_assoc()) : ?>
-                <a href="text.php?id=<?= $room['id'] ?>" class="box__link <?= $room['room_count'] != 0 ? '' : 'active' ?> box item">
-                    <h2 class="box-h1">Room <?= $room['id'] ?></h2>
-                    <span class="box-span"><?= $room['room_count'] ?></span>
+            foreach ($desks as $desk) :  ?>
+                <a href="text.php?id=<?= $desk['id'] ?>" class="box__link <?= $desk['room_count'] != 0 ? '' : 'active' ?> box item">
+                    <h2 class="box-h1">Room <?= $desk['id'] ?></h2>
+                    <span class="box-span"><?= $desk['room_count'] ?></span>
                 </a>
-            <?php endwhile; ?>
+            <?php endforeach; ?>
         </div>
         <div class="pagination">
             <div class="prev">Prev</div>

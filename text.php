@@ -3,13 +3,14 @@ include_once('./components/db.php');
 
 $id = $_GET['id'];
 $query = $conn->query("SELECT * FROM desks WHERE room_id='$id'");
-$query2 = $conn->query("SELECT * FROM room WHERE id='$id'");
-$room = $query2->fetch_assoc();
+// $query2 = $conn->query("SELECT * FROM room WHERE id='$id'");
+// $room = $query->fetch_assoc();
 $desks = [];
 while ($row = $query->fetch_assoc()) {
     array_push($desks, $row);
 }
 $i = 0;
+// var_dump($desks);
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +33,8 @@ $i = 0;
             <h2><svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-coffee" href="#icon-coffee">
                 </svg>Room <?= $i + 1 ?></h2>
-
-            <form class="input" action="components/update-room.php?desk_id=<?= $desk['id'] ?>&room_id=<?= $room['id'] ?>&room_count=<?= $room['room_count'] ?>" method="post">
+              
+            <form class="input" action="components/update-room.php?desk_id=<?= $desk['id']?>&room_id=<?= $desk['room_id']?>" method="post">
                 <div class="input">
                     <textarea class="input__field" name="text" id="editor" required><?= $desk['text'] ?></textarea>
                     <span class="input__label">Text</span>
