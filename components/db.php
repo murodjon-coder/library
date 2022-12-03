@@ -11,28 +11,51 @@ $conn = new mysqli($host, $dbuser, $pass, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$table_name = date('Y_z');
-$table_name = "d". $table_name;
+if ($_GET['table_name']) {
+    $table_name = $_GET['table_name'];
+} else {
+    $table_name = date('Y_z');
+    $table_name = "d" . $table_name;
+}
 
-// $sql = "CREATE TABLE $table_name (
-//     id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     room_id VARCHAR(30),
-//     text VARCHAR(30),
-//     date VARCHAR(50),
-//     visible TINYINT(1)
-//     )";
+// SQL query
+$sql = "SHOW TABLES IN `library`";
 
-// if ($conn->query($sql) === TRUE) {
-//     echo "Table MyGuests created successfully";
-// } else {
-//     echo "Error creating table: " . $conn->error;
-// }
+// perform the query and store the result
+$result = $conn->query($sql);
+if ($result !== false) {
+    // if at least one table in result
+    if ($result->num_rows > 0) {
+        // traverse the $result and output the name of the table(s)
+        while ($row = $result->fetch_assoc()) {
+            if ($row['Tables_in_library'] != $table_name) {
+                if ($row['Tables_in_library']) {
+                    
+                }
+                $sql = "CREATE TABLE IF NOT EXISTS  $table_name (
+                    id INT(7) AUTO_INCREMENT PRIMARY KEY,
+                    room_id INT(7),
+                    text LONGTEXT,
+                    visible TINYINT(1) DEFAULT 1
+                    )";
 
+                if ($conn->query($sql) === TRUE) {
+                    var_dump(true);
+                    $room_id = 100;
+                    for ($i = 0; $i < 150; $i++) {
+                        if ($i % 3 == 0) {
+                            $room_id += 1;
+                        }
+                        $sql = "INSERT INTO `$table_name`(`room_id`, `text`) VALUES ($room_id,'')";
+                        $conn->query($sql);
+                    }
+                }
+                break;
+            }
+        }
+    } else echo 'There is no table in "tests"';
+} else echo 'Unable to check the "tests", error - ' . $conn->error;
 
-// for ($i = 0; $i < 49; $i++) {
-//     $sql = "INSERT INTO room (room_count) VALUES ('3')";
-//     $conn->query($sql);
-// }
 
 // if ($conn->query($sql) === TRUE) {
 //     echo "New record created successfully";

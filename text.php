@@ -2,9 +2,7 @@
 include_once('./components/db.php');
 
 $id = $_GET['id'];
-$query = $conn->query("SELECT * FROM desks WHERE room_id='$id'");
-// $query2 = $conn->query("SELECT * FROM room WHERE id='$id'");
-// $room = $query->fetch_assoc();
+$query = $conn->query("SELECT * FROM $table_name WHERE room_id='$id'");
 $desks = [];
 while ($row = $query->fetch_assoc()) {
     array_push($desks, $row);

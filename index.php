@@ -1,7 +1,7 @@
 <?php
 include_once('./components/db.php');
 
-$query = $conn->query("SELECT * FROM desks");
+$query = $conn->query("SELECT * FROM $table_name");
 $desks = [];
 $i = 1;
 $j = 1;
@@ -36,7 +36,10 @@ while ($row = $query->fetch_assoc()) {
 <body>
     <div class="container">
         <div class="group">
-            <input type="date" name="begin" class="date" placeholder="Choose Date" value="" min="1997-01-01" max="2030-12-31">
+            <form action="./components/change-date.php" method="get">
+                <input type="date" name="date" class="date" placeholder="Choose Date" required>
+                <button type="submit">Apply</button>
+            </form>
         </div>
         <div class="blog gallery-items">
             <?php
