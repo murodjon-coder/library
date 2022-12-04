@@ -8,7 +8,6 @@ while ($row = $query->fetch_assoc()) {
     array_push($desks, $row);
 }
 $i = 0;
-// var_dump($desks);
 ?>
 
 <!DOCTYPE html>
