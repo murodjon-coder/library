@@ -28,7 +28,6 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid #0400f3;
     border-radius: 10px;
 }
 .booknow {
@@ -37,13 +36,24 @@ li {
     font-weight: 700;
     padding: 10px;
 }
-.date {
-    height: 35px;
+.date, .date__btn {
+    height: 50px;
     width: 300px;
     background: rgba(74, 186, 246, 0.948);
-    border: 5px solid rgb(0, 0, 0);
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 30px;
+    outline: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+.date__btn{
+    width: 100px;
+    cursor: pointer;
+}
+.date_reset_btn{
+    background-color: crimson;
+    color: #fff;
 }
 .blog {
     padding-top: 100px;
@@ -58,6 +68,7 @@ li {
     border-radius: 10px;
     display: flex;
     background: rgb(9, 232, 5);
+    transition: all .2s;
 }
 .box-h1 {
     color: #000;
